@@ -3,22 +3,31 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from './App';
-import goods from './components/goods/good';
+import goods from 'components/goods/goods';
+import ratings from 'components/ratings/ratings';
+import sellers from 'components/sellers/sellers';
 
 Vue.config.productionTip = false;
 
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/goods', component: goods }
+  { path: '/goods', component: goods },
+  { path: '/ratings', component: ratings },
+  { path: '/sellers', component: sellers }
 ];
 
 const router = new VueRouter({
+  linkActiveClass: 'active',
   routes // （缩写）相当于 routes: routes
 });
 
-/* eslint-disabled no-new */
+ /* eslint-disable no-new */
 new Vue({
+  el: '#app',
   router,
-  App
-}).$mount('#app');
+  render: h => h(App),
+  created () {
+     this.$router.push('/goods'); // 页面加载时跳转
+  }
+});

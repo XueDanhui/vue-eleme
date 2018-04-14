@@ -17,7 +17,7 @@
             <span class="sale-detail">{{seller.supports[0].description}}</span>            
           </div>
         </div>
-        <span class="sale-count">
+        <span class="sale-count" v-if="seller.supports">
           {{seller.supports.length}}个
           <i class="icon-keyboard_arrow_right"></i>
         </span>
@@ -52,6 +52,7 @@ export default {
   position relative
   background rgba(7, 17, 27, 0.5)
   color #fff
+  overflow hidden
   .seller-info
     padding 24px 12px 18px 24px
     font-size 0px
